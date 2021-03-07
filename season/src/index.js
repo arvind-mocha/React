@@ -13,8 +13,8 @@ class App extends React.Component {
     );
   }
 
-  // React says we have to define render!!
-  render() {
+  //this is how we need to implement reusability
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -24,6 +24,11 @@ class App extends React.Component {
     }
 
     return <Spinner />;
+  }
+
+  // React says we have to define render!!
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
