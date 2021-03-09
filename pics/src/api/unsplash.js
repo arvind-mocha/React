@@ -1,10 +1,9 @@
-import axios from "axios"; //better to use than fetch for api calls
-
-// can be used anywhee to do api calls
+import axios from 'axios';
 
 export default axios.create({
-  baseURL: "https://api.unsplash.com",
+  baseURL: 'https://api.unsplash.com',
   headers: {
-    Authorization: "Client-ID TcLzUjQNq3f53uoN2m-rz-jSI4-LaYVZnZqiYv7MwZ0",
+    Authorization:
+      'Client-ID 2b98c1afb0aed3b3d94a1866bdc3ac013d21a0c86d236a0fee32355c331c0296',
   },
 });
