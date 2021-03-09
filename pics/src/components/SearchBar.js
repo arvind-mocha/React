@@ -1,5 +1,4 @@
 import React from "react";
-
 class SearchBar extends React.Component {
   state = { term: "" };
 
@@ -17,7 +16,7 @@ class SearchBar extends React.Component {
     event.preventDefault();
 
     //since we are calling it from the jsx this belongs to the jsx
-    console.log(this);
+    //console.log(this);
     this.props.onSubmitted(this.state.term);
   };
 
