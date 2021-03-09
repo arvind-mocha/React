@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class ImageCard extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class ImageCard extends React.Component {
   }
 
   componentDidMount() {
-    this.imageRef.current.addEventListener('load', this.setSpans);
+    this.imageRef.current.addEventListener("load", this.setSpans);
   }
 
   setSpans = () => {
@@ -23,6 +23,10 @@ class ImageCard extends React.Component {
 
   render() {
     const { description, urls } = this.props.image;
+
+    //This is not html it is jsx .
+    //to access the exact html which means DOM we need to use ref system
+    //by refering the tag we can get access to the exact DOM element
 
     return (
       <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
