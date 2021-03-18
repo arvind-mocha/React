@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Accordion = ({ items }) => {
+  //this is a hook and this is the way to use state in a function
   const [activeIndex, setActiveIndex] = useState(null);
 
   const onTitleClick = (index) => {
@@ -8,9 +9,10 @@ const Accordion = ({ items }) => {
   };
 
   const renderedItems = items.map((item, index) => {
-    const active = index === activeIndex ? 'active' : '';
+    const active = index === activeIndex ? "active" : "";
 
     return (
+      //React.Fragment is used to tell browser that its not a single div it is a set of divs
       <React.Fragment key={item.title}>
         <div className={`title ${active}`} onClick={() => onTitleClick(index)}>
           <i className="dropdown icon"></i>
