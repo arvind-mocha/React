@@ -3,12 +3,24 @@ import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("programming");
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
 
   //if no second argument for the useeffect then it run one time then every time after rerendering
   //if second argument is an empty array [] then it run only the first time
   //if second argument is not an empty array [term] then it run one time then every time after rerendering then if the data changes from the last render
   //useEffect is equivalent to componentDidMount
+  //useEffect can return only function which will be automatically called by the react
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [term]);
 
   useEffect(() => {
     const search = async () => {
@@ -24,11 +36,10 @@ const Search = () => {
 
       setResults(data.query.search);
     };
-
-    if (term) {
+    if (debouncedTerm) {
       search();
     }
-  }, [term]);
+  }, [debouncedTerm]);
 
   const renderedResults = results.map((result) => {
     return (
