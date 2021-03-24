@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+  //use ref is euivalent to createRef
+  const ref = useRef();
 
-  //native event listeners are executed first than the html event listeners
-  //if mouse clicked on the drop down don't execute this else execute the following code
+  //native event listeners are executed first before the html event listeners
   useEffect(() => {
-    document.body.addEventListener("click", (event) => {
-      console.log(event.target);
+    const onBodyClick = (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return;
+      }
+
       setOpen(false);
-    });
+    };
+
+    document.body.addEventListener("click", onBodyClick);
+
+    return () => {
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   const renderedOptions = options.map((option) => {
@@ -29,7 +39,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   });
 
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">Select a Color</label>
         <div
@@ -38,13 +48,20 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
         >
           <i className="dropdown icon"></i>
           <div className="text">{selected.label}</div>
-          <div className={` menu ${open ? "visible transition" : ""} `}>
+          <div className={`menu ${open ? "visible transition" : ""}`}>
             {renderedOptions}
           </div>
         </div>
       </div>
+      <h2 style={{ color: selected.value }}>The Text Color Changes</h2>
     </div>
   );
 };
 
 export default Dropdown;
+
+//problems face here:
+
+//dropdown is not closing on clicking the elements inside the dropdown
+//because first the native event listener is executed which change the false to ture because of our logic
+//and then the onClick html event listener gets executed which turns true to false which makes the dropdown still open

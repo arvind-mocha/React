@@ -11,6 +11,7 @@ const Search = () => {
   //if second argument is not an empty array [term] then it run one time then every time after rerendering then if the data changes from the last render
   //useEffect is equivalent to componentDidMount
   //useEffect can return only function which will be automatically called by the react
+  //the first return is executed second time and the second return is executed third  the same for the rest
 
   useEffect(() => {
     const timerId = setTimeout(() => {
