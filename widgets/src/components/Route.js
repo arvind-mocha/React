@@ -1,8 +1,21 @@
-//the children is present in all children jsx component if it as a parent as a jsx component
+import { useEffect, useState } from 'react';
 
 const Route = ({ path, children }) => {
-  //   console.log(`Child element of path ${path} is`, children);
-  return window.location.pathname === path ? children : null;
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const onLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', onLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', onLocationChange);
+    };
+  }, []);
+
+  return currentPath === path ? children : null;
 };
 
 export default Route;
