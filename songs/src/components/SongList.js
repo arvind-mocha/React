@@ -38,4 +38,5 @@ const mapStateToProps = (state) => {
 //the parameter for the connect function is a function where we get the state from the provider which is called every time when the state changes
 //the second parameter for the connect function is the props which is passes to the component
 //the parameter for the function inside connect is the react component
+
 export default connect(mapStateToProps, { selectSong })(SongList);
