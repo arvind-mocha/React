@@ -8,10 +8,8 @@ class SongList extends Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button
-              className="ui button primary"
-              onClick={() => this.props.selectSong(song)}
-            >
+            {/* the state is changing */}
+            <button className="ui button primary" onClick={() => this.props.selectSong(song)}>
               Select
             </button>
           </div>
@@ -26,7 +24,10 @@ class SongList extends Component {
   }
 }
 
+//state is the props passed by the Provider which are the reducers
+//the value returned by this function is the props for the above react component since we attached it
 const mapStateToProps = (state) => {
+  console.log("FROM LIST", state);
   return { songs: state.songs };
 };
 
@@ -36,7 +37,8 @@ const mapStateToProps = (state) => {
 //here we connect provider with a react component
 
 //the parameter for the connect function is a function where we get the state from the provider which is called every time when the state changes
-//the second parameter for the connect function is the props which is passes to the component
+//the second parameter for the connect function is the ( action ) dispatcher which is passed to the component
+//giving dispatcher is the only way to update the state
 //the parameter for the function inside connect is the react component
 
 export default connect(mapStateToProps, { selectSong })(SongList);

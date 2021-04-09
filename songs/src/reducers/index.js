@@ -10,6 +10,7 @@ const songsReducer = () => {
 };
 
 //selectedSongReducer is called when state changes
+//conect provides the parameter for the reducer
 const selectedSongReducer = (selectedSong = null, action) => {
   if (action.type === "SONG_SELECTED") {
     return action.payload;

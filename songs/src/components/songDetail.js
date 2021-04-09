@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+//the value of this parameter song comes from the mapStateToProps function
 const SongDetail = ({ song }) => {
   if (!song) {
     return <div>Select a song</div>;
