@@ -6,7 +6,8 @@ const selectPlayer = (selectedPlayer = null, action) => {
   }
 
   if (action.type === "PLAYER_DELETED") {
-    console.log(action.player);
+    delete action.player.name;
+    delete action.player.auction;
   }
 
   return selectedPlayer;

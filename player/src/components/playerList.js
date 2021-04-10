@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { selectPlayer } from "../actions";
+import { selectPlayer, deletePlayer } from "../actions";
 
 class selectedPlayer extends Component {
   renderList() {
     return this.props.Data.map((data) => {
       return (
         <div key={data.auction}>
-          <h1>{data.name}</h1>
+          <h1 onClick={() => this.props.deletePlayer(data)}>{data.name}</h1>
           <button onClick={() => this.props.selectPlayer(data)}>Select</button>
         </div>
       );
@@ -23,4 +23,4 @@ const mapStateToProps = (state) => {
   return { player: state };
 };
 
-export default connect(mapStateToProps, { selectPlayer })(selectedPlayer);
+export default connect(mapStateToProps, { selectPlayer, deletePlayer })(selectedPlayer);
