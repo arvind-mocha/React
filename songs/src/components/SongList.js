@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectSong } from "../actions";
 
+//we can just call selectSong but it will trow error
+//in the world of react redux we will pass the actoin into the connect function and then we call it to chnage the state
+
 class SongList extends Component {
   renderList() {
     return this.props.songs.map((song) => {
@@ -9,6 +12,7 @@ class SongList extends Component {
         <div className="item" key={song.title}>
           <div className="right floated content">
             {/* the state is changing */}
+            {/* this below code is the second parameter (action) in the reducer */}
             <button className="ui button primary" onClick={() => this.props.selectSong(song)}>
               Select
             </button>
