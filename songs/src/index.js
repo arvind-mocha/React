@@ -12,3 +12,5 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
+
+// order : Action Maker -> Action -> Dispatcher -> Reducer -> State
