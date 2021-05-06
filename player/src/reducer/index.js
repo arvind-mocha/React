@@ -10,6 +10,10 @@ const selectPlayer = (selectedPlayer = null, action) => {
     delete action.player.auction;
   }
 
+  if (action.type === "SHOW_PLAYER") {
+    console.log("this is me");
+  }
+
   return selectedPlayer;
 };
 

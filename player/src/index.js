@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app";
 import Reducers from "./reducer";
-
-import { createStore } from "redux";
+import thunk from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
 const Data = [
@@ -13,8 +13,10 @@ const Data = [
   { name: "Chnadru", auction: "1500000k" },
 ];
 
+const store = createStore(Reducers, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <Provider store={createStore(Reducers)}>
+  <Provider store={store}>
     <App Data={Data} />
   </Provider>,
   document.getElementById("root")

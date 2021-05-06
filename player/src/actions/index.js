@@ -5,3 +5,9 @@ export const selectPlayer = (player) => {
 export const deletePlayer = (player) => {
   return { type: "PLAYER_DELETED", player };
 };
+
+export const showPlayer = () => {
+  return (dispatch) => {
+    dispatch({ type: "SHOW_PLAYER" });
+  };
+};

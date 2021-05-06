@@ -14,7 +14,7 @@ const playerDetails = ({ player }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return { player: state.selectPlayer };
 };
 
