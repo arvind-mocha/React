@@ -15,11 +15,14 @@ class selectedPlayer extends Component {
   }
 
   render() {
+    console.log("from class");
+    console.log(this.props);
     return <div>{this.renderList()}</div>;
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
   return { player: state };
 };
 
