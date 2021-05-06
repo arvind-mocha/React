@@ -1,12 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
 
 class UserHeader extends React.Component {
-  componentDidMount() {
-    this.props.fetchUser(this.props.userId);
-  }
-
   render() {
     const { user } = this.props;
 
@@ -18,8 +13,11 @@ class UserHeader extends React.Component {
   }
 }
 
+//props can only be accessed inside the class but
+//if you need to access props inside mapStateToProps we can use the second argument
+//ownProps is just the given in the react docs you can use any name
 const mapStateToProps = (state, ownProps) => {
   return { user: state.users.find((user) => user.id === ownProps.userId) }; // find is a array method which returns the satisfied values based on the criteria
 };
 
-export default connect(mapStateToProps, { fetchUser })(UserHeader);
+export default connect(mapStateToProps)(UserHeader);
