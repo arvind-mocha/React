@@ -1,21 +1,24 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom"; // Link is better to use than a tag. It won't load any resources and it is efficient
-
-const PageOne = () => {
-  return <div>PageOne</div>;
-};
-
-const PageTwo = () => {
-  return <div>PageTwo</div>;
-};
+import StreamCreate from "./streams/StreamCreate";
+import StreamDelete from "./streams/StreamDelete";
+import StreamEdit from "./streams/StreamEdit";
+import StreamList from "./streams/StreamList";
+import StreamShow from "./streams/StreamShow";
+import Header from "./Header"; // Header returns A component which contains Link tag in it, A link tag works only if it is inside a BrowserRouter tag
 
 const App = () => {
   return (
-    <div>
+    <div className="ui container">
       <BrowserRouter>
         <div>
-          <Route path="/" exact component={PageOne} />
-          <Route path="/pageTwo" exact component={PageTwo} />
+          <Header />
+          {/* Route Tag is only displays the component if url matches */}
+          <Route path="/" exact component={StreamList}></Route>
+          <Route path="/streams/new" exact component={StreamCreate}></Route>
+          <Route path="/streams/edit/" exact component={StreamEdit}></Route>
+          <Route path="/streams/delete" exact component={StreamDelete}></Route>
+          <Route path="/streams/show" exact component={StreamShow}></Route>
         </div>
       </BrowserRouter>
     </div>
