@@ -1,13 +1,14 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import StreamCreate from './streams/StreamCreate';
-import StreamEdit from './streams/StreamEdit';
-import StreamDelete from './streams/StreamDelete';
-import StreamList from './streams/StreamList';
-import StreamShow from './streams/StreamShow';
-import Header from './Header';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import StreamCreate from "./streams/StreamCreate";
+import StreamEdit from "./streams/StreamEdit";
+import StreamDelete from "./streams/StreamDelete";
+import StreamList from "./streams/StreamList";
+import StreamShow from "./streams/StreamShow";
+import Header from "./Header";
 
 const App = () => {
+  // displays the content respect to the urls
   return (
     <div className="ui container">
       <BrowserRouter>

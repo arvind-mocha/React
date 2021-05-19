@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import GoogleAuth from './GoogleAuth';
+import React from "react";
+import { Link } from "react-router-dom"; // Link is alternative for a tag
+import GoogleAuth from "./GoogleAuth";
 
 const Header = () => {
   return (
