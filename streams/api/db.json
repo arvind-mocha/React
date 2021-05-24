@@ -1,0 +1,14 @@
+{
+  "streams": [
+    {
+      "title": "My stream",
+      "description": "Game and More",
+      "id": 1
+    },
+    {
+      "title": "Gaming Streams",
+      "description": "Fortnite and more",
+      "id": 2
+    }
+  ]
+}
