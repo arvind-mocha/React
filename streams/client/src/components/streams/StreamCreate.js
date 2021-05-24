@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
 
 class StreamCreate extends Component {
   renderError({ error, touched }) {
@@ -31,9 +33,9 @@ class StreamCreate extends Component {
     );
   };
 
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = (formValues) => {
+    this.props.createStream(formValues);
+  };
 
   render() {
     //Field are from redux form which doesn't know any thing about the properties inside it
@@ -62,8 +64,10 @@ const validate = (formValues) => {
   return e;
 };
 
-export default reduxForm({ form: "streamCreate", validate })(StreamCreate);
+const formWrapped = reduxForm({ form: "streamCreate", validate })(StreamCreate);
 //second parameter is for validation functions
 //third parameter is for warning function, we have not passed third parameter to redux form
 //since we passed validate as second argument we get access to the formValues or input
 // The function validate is applied to each tags which has the name title or description, the connection is validate has title and description inside it. this is how redux form works
+
+export default connect(null, { createStream })(formWrapped);

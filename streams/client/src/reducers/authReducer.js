@@ -5,6 +5,7 @@ const INTIAL_STATE = {
   userId: null,
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state = INTIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN:
