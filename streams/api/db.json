@@ -6,9 +6,16 @@
       "id": 1
     },
     {
-      "title": "Gaming Streams",
-      "description": "Fortnite and more",
+      "title": "New stream",
+      "description": "Welcome",
+      "userId": "102422760458720227649",
       "id": 2
+    },
+    {
+      "title": "None",
+      "description": "Just for fun",
+      "userId": "102422760458720227649",
+      "id": 3
     }
   ]
 }

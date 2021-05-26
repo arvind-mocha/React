@@ -23,7 +23,7 @@ class StreamCreate extends Component {
     // made this function a arrow function because we are calling this function from our jsx which don't know anything about this
     // so when we call this.renderError from this function there is no meaning for this
 
-    console.log(meta); // meta informatio includes the form name, error message ect
+    // console.log(meta); // meta informatio includes the form name, error message ect
     return (
       <div className={className}>
         <label>{label}</label>
