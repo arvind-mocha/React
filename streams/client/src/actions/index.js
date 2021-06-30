@@ -18,6 +18,7 @@ export const signOut = () => {
 export const createStream = (formValues) => async (dispatch, getState) => {
   const { userId } = getState().auth;
   const response = await streams.post("/streams", { ...formValues, userId });
+
   dispatch({ type: CREATE_STREAM, payload: response.data });
   // redirect to the list of streams page only after the form gets submitted (important !!!!)
   history.push("/"); // we are forcing the user to go to this page afetr form submission
@@ -25,7 +26,7 @@ export const createStream = (formValues) => async (dispatch, getState) => {
 
 export const fetchStreams = () => async (dispatch) => {
   const response = await streams.get("/streams");
-  console.log(response.data);
+
   dispatch({ type: FETCH_STREAMS, payload: response.data });
 };
 
@@ -43,7 +44,8 @@ export const editStream = (id, formValues) => async (dispatch) => {
 };
 
 export const deleteStream = (id) => async (dispatch) => {
-  await streams.delete(`'streams/${id}`);
+  await streams.delete(`/streams/${id}`);
 
   dispatch({ type: DELETE_STREAM, payload: id });
+  history.push("/");
 };
